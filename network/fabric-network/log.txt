@@ -1,0 +1,1 @@
+Error: chaincode install failed with status: 500 - failed to invoke backing implementation of 'InstallChaincode': chaincode already successfully installed (package ID 'supplychain_1.0:a38d65123f915a15106ad4d0f8893b0880ed2979ddcc84106b9267f5ee31ddd4')
