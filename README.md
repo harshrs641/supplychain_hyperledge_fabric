@@ -41,5 +41,6 @@ Date  |  Revision  |  Description  |  Author
 ## Interesting Links
 - [IBM Food Trust](https://www.ibm.com/blockchain/solutions/food-trust)
 - [Fair Trade International](https://www.fairtrade.net/)
+- [Hyperledger Food Supply Chain dApp](https://rapchan.gitbook.io/hyperledger-food-supply-chain/implementation/deploy-run-dapp)
 
 
