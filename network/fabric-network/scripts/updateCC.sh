@@ -119,17 +119,17 @@ packageChaincode() {
   successln "Chaincode is packaged"
 }
 
-# installChaincode PEER ORG
-installChaincode() {
+# updateChaincode PEER ORG
+updateChaincode() {
   ORG=$1
   setGlobals $ORG
   set -x
-  peer lifecycle chaincode install ${CC_NAME}.tar.gz >&log.txt
+  peer lifecycle chaincode upgrade ${CC_NAME}.tar.gz >&log.txt
   res=$?
   { set +x; } 2>/dev/null
   cat log.txt
-  verifyResult $res "Chaincode installation on peer0.org${ORG} has failed"
-  successln "Chaincode is installed on peer0.org${ORG}"
+  verifyResult $res "Chaincode update on peer0.org${ORG} has failed"
+  successln "Chaincode is updated on peer0.org${ORG}"
 }
 
 # queryInstalled PEER ORG

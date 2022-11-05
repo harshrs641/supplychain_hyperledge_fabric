@@ -312,6 +312,15 @@ function deployCC() {
   fi
 }
 
+## Call the script to update a chaincode to the channel
+function updateCC() {
+  scripts/updateCC.sh $CHANNEL_NAME $CC_NAME $CC_SRC_PATH $CC_SRC_LANGUAGE $CC_VERSION $CC_SEQUENCE $CC_INIT_FCN $CC_END_POLICY $CC_COLL_CONFIG $CLI_DELAY $MAX_RETRY $VERBOSE
+
+  if [ $? -ne 0 ]; then
+    fatalln "Updating chaincode failed"
+  fi
+}
+
 
 # Tear down running network
 function networkDown() {
@@ -373,13 +382,13 @@ COMPOSE_FILE_ORG3=addOrg3/docker/docker-compose-org3.yaml
 # chaincode language defaults to "NA"
 CC_SRC_LANGUAGE="NA"
 # Chaincode version
-CC_VERSION="1.0"
+CC_VERSION="0.2"
 # Chaincode definition sequence
 CC_SEQUENCE=1
 # default image tag
-IMAGETAG="latest"
+IMAGETAG="1.1"
 # default ca image tag
-CA_IMAGETAG="latest"
+CA_IMAGETAG="1.1"
 # default database
 DATABASE="leveldb"
 
@@ -503,6 +512,8 @@ elif [ "$MODE" == "restart" ]; then
   infoln "Restarting network"
 elif [ "$MODE" == "deployCC" ]; then
   infoln "deploying chaincode on channel '${CHANNEL_NAME}'"
+elif [ "$MODE" == "updateCC" ]; then
+  infoln "updating chaincode on channel '${CHANNEL_NAME}'"
 else
   printHelp
   exit 1
@@ -514,6 +525,8 @@ elif [ "${MODE}" == "createChannel" ]; then
   createChannel
 elif [ "${MODE}" == "deployCC" ]; then
   deployCC
+elif [ "${MODE}" == "updateCC" ]; then
+  updateCC
 elif [ "${MODE}" == "down" ]; then
   networkDown
 else
