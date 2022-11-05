@@ -3,107 +3,137 @@
  */
 
 import { Context, Contract, Info, Returns, Transaction } from 'fabric-contract-api';
-import { Product } from './models/product';
-import { ProductLocationEntry } from './models/product-location-entry';
-import { ProductWithHistory } from './models/product-with-history';
+import { Gold } from './models/product';
+import { LocationEntry } from './models/product-location-entry';
+import { GoldWithHistory } from './models/product-with-history';
 
-@Info({title: 'ProductSupplyChain', description: 'Smart Contract for handling product supply chain.' })
+@Info({ title: 'ProductSupplyChain', description: 'Smart Contract for handling product supply chain.' })
 export class ProductSupplyChainContract extends Contract {
+
     @Transaction(false)
     @Returns('boolean')
-    public async productExists(ctx: Context, productId: string): Promise<boolean> {
-        const data = await ctx.stub.getState(productId);
+    public async goldExists(ctx: Context, id: string): Promise<boolean> {
+        const data = await ctx.stub.getState(id);
         return (!!data && data.length > 0);
     }
 
     @Transaction()
-    public async createProduct(ctx: Context, productJson: string): Promise<void> {
-        const product = JSON.parse(productJson) as Product;
+    @Returns('string')
+    public async createGold(ctx: Context, productJson: string): Promise<string> {
+        const gold = JSON.parse(productJson) as Gold;
 
-        const exists: boolean = await this.productExists(ctx, product.id);
-        if (exists) {
-            throw new Error(`The product ${product.id} already exists.`);
-        }
 
-        this.requireField(product.id, 'id');
-        this.requireField(product.name, 'name');
-        this.requireField(product.barcode, 'barcode');
-        this.requireField(product.placeOfOrigin, 'placeOfOrigin');
-        this.requireField(product.productionDate, 'productionDate');
-        this.requireField(product.expirationDate, 'expirationDate');
-        this.requireField(product.unitQuantity, 'unitQuantity');
-        this.requireField(product.unitQuantityType, 'unitQuantityType');
-        this.requireField(product.unitPrice, 'unitPrice');
-        this.requireField(product.category, 'category');
-        this.requireField(product.locationData.current.location, 'locationData.current.location');
-        this.requireField(product.locationData.current.arrivalDate, 'locationData.current.arrivalDate');
+        // const exists: boolean = await this.productExists(ctx, product.id);
+        // if (exists) {
+        //     throw new Error(`The product ${product.id} already exists.`);
+        // }
+        // let id = uuidv4();
+        // gold.id = id;
+        /// NEED THIS
+        // product.barcode = id;
+        // product.hash = id;
+        // product.uniqueID = id;
+        // gold.creationDate = Date.now();
 
-        const buffer = Buffer.from(JSON.stringify(product));
-        await ctx.stub.putState(product.id, buffer);
+        this.requireField(gold.weight, 'weight');
+        this.requireField(gold.weight, 'weight');
+        this.requireField(gold.creationDate, 'creationDate');
+
+        this.requireField(gold.form, 'form');
+        this.requireField(gold.carrat, 'carrat');
+        this.requireField(gold.currentInCharge, 'currentInCharge');
+
+        this.requireField(gold.unitQuantity, 'unitQuantity');
+
+        this.requireField(gold.locationData.current.location, 'locationData.current.location');
+        this.requireField(gold.locationData.current.arrivalDate, 'locationData.current.arrivalDate');
+
+        const buffer = Buffer.from(JSON.stringify(gold));
+        await ctx.stub.putState(gold.id, buffer);
+
+        return gold.id;
     }
 
     @Transaction()
-    public async shipProductTo(ctx: Context, productId: string, newLocation: string, arrivalDate: string): Promise<void> {
-        const exists: boolean = await this.productExists(ctx, productId);
+    public async shipGoldTo(ctx: Context, id: string, newLocation: string,): Promise<void> {
+        const exists: boolean = await this.goldExists(ctx, id);
         if (!exists) {
-            throw new Error(`The product ${productId} does not exist.`);
+            throw new Error(`The product ${id} does not exist.`);
         }
 
         this.requireField(newLocation, 'newLocation');
-        this.requireField(arrivalDate, 'arrivalDate');
 
-        const product = await this.readProduct(ctx, productId);
 
-        product.locationData.previous.push(new ProductLocationEntry({
-            arrivalDate: product.locationData.current.arrivalDate,
-            location: product.locationData.current.location
+        const gold = await this.readGoldData(ctx, id);
+
+        gold.locationData.previous.push(new LocationEntry({
+            arrivalDate: gold.locationData.current.arrivalDate,
+            location: gold.locationData.current.location
         }));
-        product.locationData.current.arrivalDate = arrivalDate;
-        product.locationData.current.location = newLocation;
+ 
+        gold.locationData.current.location = newLocation;
 
-        const buffer = Buffer.from(JSON.stringify(product));
-        await ctx.stub.putState(productId, buffer);
+        const buffer = Buffer.from(JSON.stringify(gold));
+        await ctx.stub.putState(id, buffer);
     }
 
     @Transaction(false)
-    @Returns('Product')
-    public async getProduct(ctx: Context, productId: string): Promise<Product> {
-        const exists: boolean = await this.productExists(ctx, productId);
+    @Returns('Gold')
+    public async getGoldData(ctx: Context, id: string): Promise<Gold> {
+        const exists: boolean = await this.goldExists(ctx, id);
         if (!exists) {
-            throw new Error(`The product ${productId} does not exist.`);
+            throw new Error(`The product ${id} does not exist.`);
         }
 
-        return this.readProduct(ctx, productId);
+        return this.readGoldData(ctx, id);
     }
 
     @Transaction(false)
-    @Returns('ProductHistory')
-    public async getProductWithHistory(ctx: Context, productId: string): Promise<ProductWithHistory> {
-        const exists: boolean = await this.productExists(ctx, productId);
+    @Returns('GoldHistory')
+    public async getGoldWithHistory(ctx: Context, id: string): Promise<GoldWithHistory> {
+        const exists: boolean = await this.goldExists(ctx, id);
         if (!exists) {
-            throw new Error(`The product ${productId} does not exist.`);
+            throw new Error(`The product ${id} does not exist.`);
         }
 
-        const product = await this.readProduct(ctx, productId);
-        const productWithHistory = new ProductWithHistory(product);
-        productWithHistory.componentProducts = [];
+        const gold = await this.readGoldData(ctx, id);
+        const goldWithHistory = new GoldWithHistory(gold);
+        goldWithHistory.component = [];
+        // let componentIds = [];
+        // let goldComponentIds = gold;
 
-        for (const childProductId of product.componentProductIds) {
-            const childProduct = await this.readProduct(ctx, childProductId);
-            productWithHistory.componentProducts.push(childProduct);
+        for (const childGoldId of gold.componentIds) {
+            const childGold = await this.readGoldData(ctx, childGoldId);
+            // goldWithHistory.component.push(childGold);
+            goldWithHistory.component.push(await this.getChildGoldHistory(ctx, childGold));
         }
-
-        return productWithHistory;
+        return goldWithHistory;
     }
 
-    private async readProduct(ctx: Context, productId: string): Promise<Product> {
-        const data = await ctx.stub.getState(productId);
-        const product = JSON.parse(data.toString()) as Product;
+
+    @Transaction(false)
+    @Returns('GoldWithHistory')
+    private async getChildGoldHistory(ctx: Context, childGold: Gold): Promise<GoldWithHistory> {
+        const goldWithHistory = new GoldWithHistory(childGold);
+        goldWithHistory.component = [];
+        if (childGold.componentIds.length != 0) {
+            for (const childGoldComponentsId of childGold.componentIds) {
+                const childGoldComponent = await this.readGoldData(ctx, childGoldComponentsId);
+                goldWithHistory.component.push(await this.getChildGoldHistory(ctx, childGoldComponent));
+               
+            }
+        }
+        return goldWithHistory;
+    }
+
+    private async readGoldData(ctx: Context, id: string): Promise<Gold> {
+        const data = await ctx.stub.getState(id);
+        const product = JSON.parse(data.toString()) as Gold;
 
         return product;
     }
 
-    private requireField(value: string | number, fieldName: string) {
+    private requireField(value, fieldName: string) {
         if (!value) {
             throw new Error(`The '${fieldName}' field is required.`);
         }

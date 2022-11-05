@@ -42,5 +42,31 @@ Date  |  Revision  |  Description  |  Author
 - [IBM Food Trust](https://www.ibm.com/blockchain/solutions/food-trust)
 - [Fair Trade International](https://www.fairtrade.net/)
 - [Hyperledger Food Supply Chain dApp](https://rapchan.gitbook.io/hyperledger-food-supply-chain/implementation/deploy-run-dapp)
+- [Local CouchDB](http://127.0.0.1:5984/_utils/#login)
 
 
+```
+harshrajsingh@Harshs-MacBook-Pro fabric-network % ./network.sh down  
+harshrajsingh@Harshs-MacBook-Pro fabric-network % ./network.sh up createChannel -ca -s couchdb   
+harshrajsingh@Harshs-MacBook-Pro fabric-network % ./network.sh deployCC -ccn supplychain -ccp ../../chaincode -ccl typescript
+
+```
+
+
+
+
+
+```
+harshrajsingh@Harshs-MacBook-Pro fabric % rm -R wallet/*
+harshrajsingh@Harshs-MacBook-Pro fabric % node '/Users/harshrajsingh/GitHub/hyperledger-food-supply-chain/web-app/server/fabric/enrollAdmin.js'
+harshrajsingh@Harshs-MacBook-Pro fabric % node '/Users/harshrajsingh/GitHub/hyperledger-food-supply-chain/web-app/server/fabric/registerUsers.js'
+
+```
+
+
+
+
+```
+harshrajsingh@Harshs-MacBook-Pro server % node '/Users/harshrajsingh/GitHub/hyperledger-food-supply-chain/web-app/server/app.js'
+
+```

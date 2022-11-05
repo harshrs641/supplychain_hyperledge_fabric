@@ -1,50 +1,54 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
-import { ProductLocationData } from './product-location-data';
+import { LocationData } from './product-location-data';
+import { InCharge } from './in-charge';
 
 @FabricObject()
-export class Product {
+export class Gold {
+
+    /// UNIQUE
     @Property()
     id: string;
-
-    @Property('componentProductIds', 'Array<string>')
-    componentProductIds: string[];
-
     @Property()
     barcode: string;
-
     @Property()
-    name: string;
+    uniqueID: string;
+    @Property()
+    hash: string;
+
+    @Property('componentIds', 'Array<string>')
+    componentIds: string[];
 
     @Property()
     placeOfOrigin: string;
 
     @Property()
-    productionDate: string;
-
-    @Property()
-    expirationDate: string;
+    creationDate: number;
 
     @Property()
     unitQuantity: number;
 
     @Property()
-    unitQuantityType: string;
+    weight: number;
 
     @Property()
-    batchQuantity: number;
+    carrat: number;
 
     @Property()
-    unitPrice: string;
+    form: string;
+
+    @Property('locationData', 'LocationData')
+    locationData: LocationData;
 
     @Property()
-    category: string;
+    note: string;
 
-    @Property()
-    variety: string;
+    @Property('currentInCharge', 'InCharge')
+    currentInCharge: InCharge;
 
-    @Property()
-    misc: string;
-
-    @Property('locationData', 'ProductLocationData')
-    locationData: ProductLocationData;
+    @Property('inCharge', 'Array<InCharge>')
+    previousInCharge: InCharge[];
 }
+
+// enum GoldForm {
+//     BALL = 0, BAR = 1, MELT = 2, ORIGINAL = 3,
+// }

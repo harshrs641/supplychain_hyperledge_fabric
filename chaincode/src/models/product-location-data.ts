@@ -1,11 +1,11 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
-import { ProductLocationEntry } from './product-location-entry';
+import { LocationEntry  } from './product-location-entry';
 
 @FabricObject()
-export class ProductLocationData {
-    @Property('previous', 'Array<ProductLocationEntry>')
-    previous: ProductLocationEntry[];
+export class LocationData {
+    @Property('previous', 'Array<LocationEntry>')
+    previous: LocationEntry[];
 
     @Property()
-    current: ProductLocationEntry;
+    current: LocationEntry;
 }

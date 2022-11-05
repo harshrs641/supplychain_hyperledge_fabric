@@ -1,6 +1,6 @@
 [
     {
-        "transactionName": "productExists",
+        "transactionName": "goldExists",
         "transactionLabel": "A test productExists transaction",
         "arguments": [
             "001"
@@ -8,7 +8,7 @@
         "transientData": {}
     },
     {
-        "transactionName": "createProduct",
+        "transactionName": "createGold",
         "transactionLabel": "A test createProduct transaction",
         "arguments": [
             "001",
@@ -17,7 +17,7 @@
         "transientData": {}
     },
     {
-        "transactionName": "readProduct",
+        "transactionName": "getGoldData",
         "transactionLabel": "A test readProduct transaction",
         "arguments": [
             "001"
@@ -25,7 +25,7 @@
         "transientData": {}
     },
     {
-        "transactionName": "updateProduct",
+        "transactionName": "getGoldWithHistory",
         "transactionLabel": "A test updateProduct transaction",
         "arguments": [
             "001",
@@ -34,7 +34,7 @@
         "transientData": {}
     },
     {
-        "transactionName": "deleteProduct",
+        "transactionName": "shipGoldTo",
         "transactionLabel": "A test deleteProduct transaction",
         "arguments": [
             "001"

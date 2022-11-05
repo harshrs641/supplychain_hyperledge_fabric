@@ -1,14 +1,18 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
 
 @FabricObject()
-export class LocationEntry {
-    constructor(obj?: Partial<LocationEntry>) {
+export class InCharge {
+    constructor(obj?: Partial<InCharge>) {
         Object.assign(this, obj);
     }
 
     @Property()
-    location: string;
+    name: string;
 
     @Property()
-    arrivalDate: number;
+    type: string;
+
+    @Property()
+    contact: string;
+
 }

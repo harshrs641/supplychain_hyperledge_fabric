@@ -4,10 +4,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const network = require('./fabric/network');
-// Setting for Hyperledger Fabric
-const { FileSystemWallet, Gateway } = require('fabric-network');
-const path = require('path');
-const ccpPath = path.resolve(__dirname, '.',  'connection-org1.json');
+
+const barcode = require('barcode');
+
+
+
+let crypto;
 app.use(express.json());
 app.use(cors());
 
@@ -17,12 +19,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/getProduct', network.connectToNetwork, async (req, res) => {
+  
     try{
         
         const contract = req.contract;
         const productId = req.query.id.toString();
         
-        const result = await contract.evaluateTransaction('getProduct', productId);
+        const result = await contract.evaluateTransaction('getGoldData', productId);
         const response = JSON.parse(result.toString());
         console.log(response);
         res.json({ result: response });
@@ -34,14 +37,22 @@ app.get('/getProduct', network.connectToNetwork, async (req, res) => {
     }
 });
 
-app.post('/createProduct', network.connectToNetwork, async (req, res) => {
+app.post('/createGold', network.connectToNetwork, async (req, res) => {
     try{
+        if(!crypto){
+            crypto=(await import('crypto-random-string')).default;
+        }
+    
+
         const contract = req.contract;
+        req.body.barcode= crypto({length: 12, type: 'numeric'});
+        req.body.hash=crypto({length: 32, type: 'base64'});
+        req.body.id=crypto({length: 10,});
         const productJson = JSON.stringify(req.body);
 
         console.log(productJson);
 
-        const result = await contract.submitTransaction('createProduct', productJson);
+        const result = await contract.submitTransaction('createGold', productJson);
         console.log(result.toString());
         res.json( {result: result} );
     } catch(error) {
@@ -57,7 +68,7 @@ app.get('/getProductWithHistory', network.connectToNetwork, async (req, res) => 
         const contract = req.contract;
         const productId = req.query.id.toString();
         
-        const result = await contract.evaluateTransaction('getProductWithHistory', productId);
+        const result = await contract.evaluateTransaction('getGoldWithHistory', productId);
         const response = JSON.parse(result.toString());
         console.log(response);
         res.json({ result: response });
@@ -75,7 +86,7 @@ app.get('/productExists', network.connectToNetwork, async (req, res) => {
         const productId = req.query.id.toString();
         console.log(productId);
 
-        const result = await contract.evaluateTransaction('productExists', productId);
+        const result = await contract.evaluateTransaction('goldExists', productId);
         console.log(result.toString());
         res.json({ exists: result.toString() });
     } catch(error) {
@@ -98,7 +109,7 @@ app.post('/shipProduct', network.connectToNetwork, async (req, res) => {
         //     arrivalDate
         // };
 
-        const result = await contract.submitTransaction('shipProductTo', 
+        const result = await contract.submitTransaction('shipGoldTo', 
             shipDetails.productId, 
             shipDetails.newLocation,
             shipDetails.arrivalDate);
@@ -112,7 +123,7 @@ app.post('/shipProduct', network.connectToNetwork, async (req, res) => {
         });
     }
 });
-
-app.listen(3004, () => {
-    console.log('Listening on port 3003');
+const PORT=3005;
+app.listen(PORT, () => {
+    console.log(`Listening on port ${PORT}`);
 });
