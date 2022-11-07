@@ -1,13 +1,13 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
-import { LocationData } from './product-location-data';
+import { LocationData } from './gold-location-data';
 import { InCharge } from './in-charge';
 
 @FabricObject()
 export class Gold {
 
     /// UNIQUE
-    @Property()
-    id: string;
+    // @Property()
+    // id: string;
     @Property()
     barcode: string;
     @Property()
@@ -18,8 +18,8 @@ export class Gold {
     @Property('componentIds', 'Array<string>')
     componentIds: string[];
 
-    @Property()
-    placeOfOrigin: string;
+    // @Property()
+    // placeOfOrigin: string;
 
     @Property()
     creationDate: number;
@@ -31,7 +31,7 @@ export class Gold {
     weight: number;
 
     @Property()
-    carrat: number;
+    purity: number;
 
     @Property()
     form: string;

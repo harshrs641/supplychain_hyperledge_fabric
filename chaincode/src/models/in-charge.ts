@@ -14,5 +14,7 @@ export class InCharge {
 
     @Property()
     contact: string;
+    @Property()
+    assignedDate: number;
 
 }

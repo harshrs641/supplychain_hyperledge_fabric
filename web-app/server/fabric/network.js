@@ -21,7 +21,7 @@ exports.connectToNetwork = async function (req, res, next) {
     const identity = await wallet.get(IDENTITY);
     if (!identity) {
       console.log(`An identity for the user "${IDENTITY}" does not exist in the wallet`);
-      console.log('Run the registerManager.js script before retrying');
+      console.log('Run the registerUsers.js script before retrying');
       return;
     }
 
@@ -34,7 +34,6 @@ exports.connectToNetwork = async function (req, res, next) {
     });
 
     const network = await gateway.getNetwork(CHANNEL);
-    // console.log(network);
     const contract = network.getContract(CONTRACT);
 
 

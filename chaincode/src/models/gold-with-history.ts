@@ -1,13 +1,13 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
-import { Gold } from './product';
+import { Gold } from './gold_entry';
 
 @FabricObject()
 export class GoldWithHistory extends Gold {
-    constructor(product?: Gold) {
+    constructor(gold?: Gold) {
         super();
-        Object.assign(this, product);
+        Object.assign(this, gold);
     }
 
-    @Property('componentProducts', 'Array<GoldWithHistory>')
+    @Property('componentGolds', 'Array<GoldWithHistory>')
     component: GoldWithHistory[];
 }
