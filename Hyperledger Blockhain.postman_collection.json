@@ -1,0 +1,799 @@
+{
+	"info": {
+		"_postman_id": "1a0df111-42ff-445d-9f73-12d4d8ae5ff3",
+		"name": "Hyperledger Blockhain",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12650259"
+	},
+	"item": [
+		{
+			"name": "Create Gold Entry",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"weight\": 1000,\n    \"form\": \"bar\",\n    \"uniqueID\": \"uniqueID\",\n    \"purity\": 99.9,\n    \"currentInCharge\": {\n        \"name\": \"Kush\",\n        \"type\": \"Manager\",\n        \"contact\": \"8420320655\"\n    },\n    \"componentIds\": [\n\n    ],\n    \"unitQuantity\": 1,\n    \"note\": \"bar to bar\",\n    \"locationData\": {\n        \"current\": {\n            \"location\": \"Kolkata\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/createGoldEntry",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"createGoldEntry"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "001",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Gold Entry",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"weight\": 1.2,\n    \"form\": \"bar\",\n    \"uniqueID\": \"uniqueID\",\n    \"carrat\": 22,\n    \"purity\": 99.8,\n    \"currentInCharge\": {\n        \"name\": \"Harsh\",\n        \"type\": \"Manager\",\n        \"contact\": \"8420320655\"\n    },\n    \"componentIds\": [],\n    \"unitQuantity\": 1,\n    \"note\": \"Took this from an IAS\",\n    \"locationData\": {\n        \"current\": {\n            \"location\": \"Hyderabad\",\n            \"arrivalDate\": 4654564646546\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/createGoldEntry",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"createGoldEntry"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "001",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "26"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1a-Ivhrlfm/cgFQEUgsdc8G5TtQsX0\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Nov 2022 10:08:01 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"barcode\": \"138817573247\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Change InCharge",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"barcode\": \"792193507446\",\n    \"name\": \"Tushar\",\n    \"type\": \"Captain\",\n    \"contact\": \"9393939393\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/changeInCharge",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"changeInCharge"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "001",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Change InCharge",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"barcode\": \"371655377530\",\n    \"name\": \"Tushar\",\n    \"type\": \"Captain\",\n    \"contact\": \"9393939393\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/changeInCharge",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"changeInCharge"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "001",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "45"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2d-k0h0MfE0fgf6WnWt5MMjN+GpwQ4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Nov 2022 10:20:30 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Transaction submitted.\",\n    \"txId\": \"\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Ship Gold",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"barcode\": \"792193507446\",\n    \"newLocation\": \"Rajasthan\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/shipGoldTo",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"shipGoldTo"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "001",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ship Gold",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"barcode\": \"759570687978\",\n    \"newLocation\": \"Rajasthan\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/shipGoldTo",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"shipGoldTo"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "001",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"23-/rNrvcXy8Eqmy1QcM6fFFFEziL4\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Nov 2022 10:33:27 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Transaction submitted.\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/getGoldEntryDetail?barcode=042884330094",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getGoldEntryDetail"
+					],
+					"query": [
+						{
+							"key": "barcode",
+							"value": "042884330094"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Gold Detail",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/getGoldEntryDetail?barcode=759570687978",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"getGoldEntryDetail"
+							],
+							"query": [
+								{
+									"key": "barcode",
+									"value": "759570687978"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "606"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"25e-lsmigz3wuSIZ23bZUi1kytsu1Ow\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Nov 2022 10:35:24 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"barcode\": \"759570687978\",\n        \"carrat\": 22,\n        \"componentIds\": [],\n        \"creationDate\": 1667817180708,\n        \"currentInCharge\": {\n            \"name\": \"Tushar\",\n            \"type\": \"Captain\",\n            \"contact\": \"9393939393\",\n            \"assignedDate\": 1667817193731\n        },\n        \"form\": \"bar\",\n        \"hash\": \"Tm8yXZc1VGUoX+1LrHAtwazEV64GbFVA\",\n        \"locationData\": {\n            \"current\": {\n                \"arrivalDate\": 1667817204836,\n                \"location\": \"Rajasthan\"\n            },\n            \"previous\": [\n                {\n                    \"arrivalDate\": 1667817180708,\n                    \"location\": \"Hyderabad\"\n                }\n            ]\n        },\n        \"note\": \"Took this from an IAS\",\n        \"previousInCharge\": [\n            {\n                \"assignedDate\": 1667817180708,\n                \"contact\": \"8420320655\",\n                \"name\": \"Harsh\",\n                \"type\": \"Manager\"\n            }\n        ],\n        \"purity\": 99.8,\n        \"uniqueID\": \"uniqueID\",\n        \"unitQuantity\": 1,\n        \"weight\": 1.2\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Gold History",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/getGoldEntryWithHistory?barcode=042884330094",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"getGoldEntryWithHistory"
+					],
+					"query": [
+						{
+							"key": "barcode",
+							"value": "042884330094"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Gold History",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/getProductWithHistory?id=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"getProductWithHistory"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3034"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bda-tinidvCGuDt+oog9r/E6pUOdVOs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Nov 2022 11:21:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"barcode\": \"123ABC\",\n        \"carrat\": 22,\n        \"componentIds\": [\n            \"4\"\n        ],\n        \"creationDate\": 123,\n        \"currentInCharge\": {\n            \"contact\": \"8420320655\",\n            \"name\": \"In Charge\",\n            \"type\": \"Manager\"\n        },\n        \"form\": \"bar\",\n        \"hash\": \"hash\",\n        \"id\": \"5\",\n        \"locationData\": {\n            \"current\": {\n                \"arrivalDate\": 4654564646546,\n                \"location\": \"sfd\"\n            },\n            \"previous\": [\n                {\n                    \"arrivalDate\": 674564654,\n                    \"location\": \"sfd\"\n                }\n            ]\n        },\n        \"note\": \"wfesdc\",\n        \"placeOfOrigin\": \"placeOfOrigin\",\n        \"uniqueID\": \"uniqueID\",\n        \"unitQuantity\": 1,\n        \"weight\": 1.2,\n        \"component\": [\n            {\n                \"barcode\": \"123ABC\",\n                \"carrat\": 22,\n                \"componentIds\": [\n                    \"2\",\n                    \"3\"\n                ],\n                \"creationDate\": 123,\n                \"currentInCharge\": {\n                    \"contact\": \"8420320655\",\n                    \"name\": \"In Charge\",\n                    \"type\": \"Manager\"\n                },\n                \"form\": \"bar\",\n                \"hash\": \"hash\",\n                \"id\": \"4\",\n                \"locationData\": {\n                    \"current\": {\n                        \"arrivalDate\": 4654564646546,\n                        \"location\": \"sfd\"\n                    },\n                    \"previous\": [\n                        {\n                            \"arrivalDate\": 674564654,\n                            \"location\": \"sfd\"\n                        }\n                    ]\n                },\n                \"note\": \"wfesdc\",\n                \"placeOfOrigin\": \"placeOfOrigin\",\n                \"uniqueID\": \"uniqueID\",\n                \"unitQuantity\": 1,\n                \"weight\": 1.2,\n                \"component\": [\n                    {\n                        \"barcode\": \"123ABC\",\n                        \"carrat\": 22,\n                        \"componentIds\": [\n                            \"1\"\n                        ],\n                        \"creationDate\": 123,\n                        \"currentInCharge\": {\n                            \"contact\": \"8420320655\",\n                            \"name\": \"In Charge\",\n                            \"type\": \"Manager\"\n                        },\n                        \"form\": \"bar\",\n                        \"hash\": \"hash\",\n                        \"id\": \"2\",\n                        \"locationData\": {\n                            \"current\": {\n                                \"arrivalDate\": 4654564646546,\n                                \"location\": \"sfd\"\n                            },\n                            \"previous\": [\n                                {\n                                    \"arrivalDate\": 674564654,\n                                    \"location\": \"sfd\"\n                                }\n                            ]\n                        },\n                        \"note\": \"wfesdc\",\n                        \"placeOfOrigin\": \"placeOfOrigin\",\n                        \"uniqueID\": \"uniqueID\",\n                        \"unitQuantity\": 1,\n                        \"weight\": 1.2,\n                        \"component\": [\n                            {\n                                \"barcode\": \"123ABC\",\n                                \"carrat\": 22,\n                                \"componentIds\": [],\n                                \"creationDate\": 123,\n                                \"currentInCharge\": {\n                                    \"contact\": \"8420320655\",\n                                    \"name\": \"In Charge\",\n                                    \"type\": \"Manager\"\n                                },\n                                \"form\": \"bar\",\n                                \"hash\": \"hash\",\n                                \"id\": \"1\",\n                                \"locationData\": {\n                                    \"current\": {\n                                        \"arrivalDate\": 4654564646546,\n                                        \"location\": \"sfd\"\n                                    },\n                                    \"previous\": [\n                                        {\n                                            \"arrivalDate\": 674564654,\n                                            \"location\": \"sfd\"\n                                        }\n                                    ]\n                                },\n                                \"note\": \"wfesdc\",\n                                \"placeOfOrigin\": \"placeOfOrigin\",\n                                \"uniqueID\": \"uniqueID\",\n                                \"unitQuantity\": 1,\n                                \"weight\": 1.2,\n                                \"component\": []\n                            }\n                        ]\n                    },\n                    {\n                        \"barcode\": \"123ABC\",\n                        \"carrat\": 22,\n                        \"componentIds\": [\n                            \"2\"\n                        ],\n                        \"creationDate\": 123,\n                        \"currentInCharge\": {\n                            \"contact\": \"8420320655\",\n                            \"name\": \"In Charge\",\n                            \"type\": \"Manager\"\n                        },\n                        \"form\": \"bar\",\n                        \"hash\": \"hash\",\n                        \"id\": \"3\",\n                        \"locationData\": {\n                            \"current\": {\n                                \"arrivalDate\": 4654564646546,\n                                \"location\": \"sfd\"\n                            },\n                            \"previous\": [\n                                {\n                                    \"arrivalDate\": 674564654,\n                                    \"location\": \"sfd\"\n                                }\n                            ]\n                        },\n                        \"note\": \"wfesdc\",\n                        \"placeOfOrigin\": \"placeOfOrigin\",\n                        \"uniqueID\": \"uniqueID\",\n                        \"unitQuantity\": 1,\n                        \"weight\": 1.2,\n                        \"component\": [\n                            {\n                                \"barcode\": \"123ABC\",\n                                \"carrat\": 22,\n                                \"componentIds\": [\n                                    \"1\"\n                                ],\n                                \"creationDate\": 123,\n                                \"currentInCharge\": {\n                                    \"contact\": \"8420320655\",\n                                    \"name\": \"In Charge\",\n                                    \"type\": \"Manager\"\n                                },\n                                \"form\": \"bar\",\n                                \"hash\": \"hash\",\n                                \"id\": \"2\",\n                                \"locationData\": {\n                                    \"current\": {\n                                        \"arrivalDate\": 4654564646546,\n                                        \"location\": \"sfd\"\n                                    },\n                                    \"previous\": [\n                                        {\n                                            \"arrivalDate\": 674564654,\n                                            \"location\": \"sfd\"\n                                        }\n                                    ]\n                                },\n                                \"note\": \"wfesdc\",\n                                \"placeOfOrigin\": \"placeOfOrigin\",\n                                \"uniqueID\": \"uniqueID\",\n                                \"unitQuantity\": 1,\n                                \"weight\": 1.2,\n                                \"component\": [\n                                    {\n                                        \"barcode\": \"123ABC\",\n                                        \"carrat\": 22,\n                                        \"componentIds\": [],\n                                        \"creationDate\": 123,\n                                        \"currentInCharge\": {\n                                            \"contact\": \"8420320655\",\n                                            \"name\": \"In Charge\",\n                                            \"type\": \"Manager\"\n                                        },\n                                        \"form\": \"bar\",\n                                        \"hash\": \"hash\",\n                                        \"id\": \"1\",\n                                        \"locationData\": {\n                                            \"current\": {\n                                                \"arrivalDate\": 4654564646546,\n                                                \"location\": \"sfd\"\n                                            },\n                                            \"previous\": [\n                                                {\n                                                    \"arrivalDate\": 674564654,\n                                                    \"location\": \"sfd\"\n                                                }\n                                            ]\n                                        },\n                                        \"note\": \"wfesdc\",\n                                        \"placeOfOrigin\": \"placeOfOrigin\",\n                                        \"uniqueID\": \"uniqueID\",\n                                        \"unitQuantity\": 1,\n                                        \"weight\": 1.2,\n                                        \"component\": []\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "Get Gold History2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/getGoldEntryWithHistory?barcode=798343806002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"getGoldEntryWithHistory"
+							],
+							"query": [
+								{
+									"key": "barcode",
+									"value": "798343806002"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1220"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4c4-rdoxlchhXxqNGdWE7MQDVe7uDRU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Nov 2022 10:41:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"barcode\": \"798343806002\",\n        \"componentIds\": [\n            \"759570687978\"\n        ],\n        \"creationDate\": 1667817615475,\n        \"currentInCharge\": {\n            \"name\": \"Tushar\",\n            \"type\": \"Captain\",\n            \"contact\": \"9393939393\",\n            \"assignedDate\": 1667817632915\n        },\n        \"form\": \"bar\",\n        \"hash\": \"A7519SG9rfYBljWy5ySrwmADw6nbIAOI\",\n        \"locationData\": {\n            \"current\": {\n                \"arrivalDate\": 1667817640542,\n                \"location\": \"Rajasthan\"\n            },\n            \"previous\": [\n                {\n                    \"arrivalDate\": 1667817615475,\n                    \"location\": \"Kolkata\"\n                }\n            ]\n        },\n        \"note\": \"bar to bar\",\n        \"previousInCharge\": [\n            {\n                \"assignedDate\": 1667817615475,\n                \"contact\": \"8420320655\",\n                \"name\": \"Kush\",\n                \"type\": \"Manager\"\n            }\n        ],\n        \"purity\": 99.9,\n        \"uniqueID\": \"uniqueID\",\n        \"unitQuantity\": 1,\n        \"weight\": 1000,\n        \"component\": [\n            {\n                \"barcode\": \"759570687978\",\n                \"carrat\": 22,\n                \"componentIds\": [],\n                \"creationDate\": 1667817180708,\n                \"currentInCharge\": {\n                    \"name\": \"Tushar\",\n                    \"type\": \"Captain\",\n                    \"contact\": \"9393939393\",\n                    \"assignedDate\": 1667817193731\n                },\n                \"form\": \"bar\",\n                \"hash\": \"Tm8yXZc1VGUoX+1LrHAtwazEV64GbFVA\",\n                \"locationData\": {\n                    \"current\": {\n                        \"arrivalDate\": 1667817204836,\n                        \"location\": \"Rajasthan\"\n                    },\n                    \"previous\": [\n                        {\n                            \"arrivalDate\": 1667817180708,\n                            \"location\": \"Hyderabad\"\n                        }\n                    ]\n                },\n                \"note\": \"Took this from an IAS\",\n                \"previousInCharge\": [\n                    {\n                        \"assignedDate\": 1667817180708,\n                        \"contact\": \"8420320655\",\n                        \"name\": \"Harsh\",\n                        \"type\": \"Manager\"\n                    }\n                ],\n                \"purity\": 99.8,\n                \"uniqueID\": \"uniqueID\",\n                \"unitQuantity\": 1,\n                \"weight\": 1.2,\n                \"component\": []\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Gold Entry Exist",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/goldEntryExists?barcode=792193507446",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"goldEntryExists"
+					],
+					"query": [
+						{
+							"key": "barcode",
+							"value": "792193507446"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Gold History",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/getProductWithHistory?id=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"getProductWithHistory"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "3034"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"bda-tinidvCGuDt+oog9r/E6pUOdVOs\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 05 Nov 2022 11:21:59 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"barcode\": \"123ABC\",\n        \"carrat\": 22,\n        \"componentIds\": [\n            \"4\"\n        ],\n        \"creationDate\": 123,\n        \"currentInCharge\": {\n            \"contact\": \"8420320655\",\n            \"name\": \"In Charge\",\n            \"type\": \"Manager\"\n        },\n        \"form\": \"bar\",\n        \"hash\": \"hash\",\n        \"id\": \"5\",\n        \"locationData\": {\n            \"current\": {\n                \"arrivalDate\": 4654564646546,\n                \"location\": \"sfd\"\n            },\n            \"previous\": [\n                {\n                    \"arrivalDate\": 674564654,\n                    \"location\": \"sfd\"\n                }\n            ]\n        },\n        \"note\": \"wfesdc\",\n        \"placeOfOrigin\": \"placeOfOrigin\",\n        \"uniqueID\": \"uniqueID\",\n        \"unitQuantity\": 1,\n        \"weight\": 1.2,\n        \"component\": [\n            {\n                \"barcode\": \"123ABC\",\n                \"carrat\": 22,\n                \"componentIds\": [\n                    \"2\",\n                    \"3\"\n                ],\n                \"creationDate\": 123,\n                \"currentInCharge\": {\n                    \"contact\": \"8420320655\",\n                    \"name\": \"In Charge\",\n                    \"type\": \"Manager\"\n                },\n                \"form\": \"bar\",\n                \"hash\": \"hash\",\n                \"id\": \"4\",\n                \"locationData\": {\n                    \"current\": {\n                        \"arrivalDate\": 4654564646546,\n                        \"location\": \"sfd\"\n                    },\n                    \"previous\": [\n                        {\n                            \"arrivalDate\": 674564654,\n                            \"location\": \"sfd\"\n                        }\n                    ]\n                },\n                \"note\": \"wfesdc\",\n                \"placeOfOrigin\": \"placeOfOrigin\",\n                \"uniqueID\": \"uniqueID\",\n                \"unitQuantity\": 1,\n                \"weight\": 1.2,\n                \"component\": [\n                    {\n                        \"barcode\": \"123ABC\",\n                        \"carrat\": 22,\n                        \"componentIds\": [\n                            \"1\"\n                        ],\n                        \"creationDate\": 123,\n                        \"currentInCharge\": {\n                            \"contact\": \"8420320655\",\n                            \"name\": \"In Charge\",\n                            \"type\": \"Manager\"\n                        },\n                        \"form\": \"bar\",\n                        \"hash\": \"hash\",\n                        \"id\": \"2\",\n                        \"locationData\": {\n                            \"current\": {\n                                \"arrivalDate\": 4654564646546,\n                                \"location\": \"sfd\"\n                            },\n                            \"previous\": [\n                                {\n                                    \"arrivalDate\": 674564654,\n                                    \"location\": \"sfd\"\n                                }\n                            ]\n                        },\n                        \"note\": \"wfesdc\",\n                        \"placeOfOrigin\": \"placeOfOrigin\",\n                        \"uniqueID\": \"uniqueID\",\n                        \"unitQuantity\": 1,\n                        \"weight\": 1.2,\n                        \"component\": [\n                            {\n                                \"barcode\": \"123ABC\",\n                                \"carrat\": 22,\n                                \"componentIds\": [],\n                                \"creationDate\": 123,\n                                \"currentInCharge\": {\n                                    \"contact\": \"8420320655\",\n                                    \"name\": \"In Charge\",\n                                    \"type\": \"Manager\"\n                                },\n                                \"form\": \"bar\",\n                                \"hash\": \"hash\",\n                                \"id\": \"1\",\n                                \"locationData\": {\n                                    \"current\": {\n                                        \"arrivalDate\": 4654564646546,\n                                        \"location\": \"sfd\"\n                                    },\n                                    \"previous\": [\n                                        {\n                                            \"arrivalDate\": 674564654,\n                                            \"location\": \"sfd\"\n                                        }\n                                    ]\n                                },\n                                \"note\": \"wfesdc\",\n                                \"placeOfOrigin\": \"placeOfOrigin\",\n                                \"uniqueID\": \"uniqueID\",\n                                \"unitQuantity\": 1,\n                                \"weight\": 1.2,\n                                \"component\": []\n                            }\n                        ]\n                    },\n                    {\n                        \"barcode\": \"123ABC\",\n                        \"carrat\": 22,\n                        \"componentIds\": [\n                            \"2\"\n                        ],\n                        \"creationDate\": 123,\n                        \"currentInCharge\": {\n                            \"contact\": \"8420320655\",\n                            \"name\": \"In Charge\",\n                            \"type\": \"Manager\"\n                        },\n                        \"form\": \"bar\",\n                        \"hash\": \"hash\",\n                        \"id\": \"3\",\n                        \"locationData\": {\n                            \"current\": {\n                                \"arrivalDate\": 4654564646546,\n                                \"location\": \"sfd\"\n                            },\n                            \"previous\": [\n                                {\n                                    \"arrivalDate\": 674564654,\n                                    \"location\": \"sfd\"\n                                }\n                            ]\n                        },\n                        \"note\": \"wfesdc\",\n                        \"placeOfOrigin\": \"placeOfOrigin\",\n                        \"uniqueID\": \"uniqueID\",\n                        \"unitQuantity\": 1,\n                        \"weight\": 1.2,\n                        \"component\": [\n                            {\n                                \"barcode\": \"123ABC\",\n                                \"carrat\": 22,\n                                \"componentIds\": [\n                                    \"1\"\n                                ],\n                                \"creationDate\": 123,\n                                \"currentInCharge\": {\n                                    \"contact\": \"8420320655\",\n                                    \"name\": \"In Charge\",\n                                    \"type\": \"Manager\"\n                                },\n                                \"form\": \"bar\",\n                                \"hash\": \"hash\",\n                                \"id\": \"2\",\n                                \"locationData\": {\n                                    \"current\": {\n                                        \"arrivalDate\": 4654564646546,\n                                        \"location\": \"sfd\"\n                                    },\n                                    \"previous\": [\n                                        {\n                                            \"arrivalDate\": 674564654,\n                                            \"location\": \"sfd\"\n                                        }\n                                    ]\n                                },\n                                \"note\": \"wfesdc\",\n                                \"placeOfOrigin\": \"placeOfOrigin\",\n                                \"uniqueID\": \"uniqueID\",\n                                \"unitQuantity\": 1,\n                                \"weight\": 1.2,\n                                \"component\": [\n                                    {\n                                        \"barcode\": \"123ABC\",\n                                        \"carrat\": 22,\n                                        \"componentIds\": [],\n                                        \"creationDate\": 123,\n                                        \"currentInCharge\": {\n                                            \"contact\": \"8420320655\",\n                                            \"name\": \"In Charge\",\n                                            \"type\": \"Manager\"\n                                        },\n                                        \"form\": \"bar\",\n                                        \"hash\": \"hash\",\n                                        \"id\": \"1\",\n                                        \"locationData\": {\n                                            \"current\": {\n                                                \"arrivalDate\": 4654564646546,\n                                                \"location\": \"sfd\"\n                                            },\n                                            \"previous\": [\n                                                {\n                                                    \"arrivalDate\": 674564654,\n                                                    \"location\": \"sfd\"\n                                                }\n                                            ]\n                                        },\n                                        \"note\": \"wfesdc\",\n                                        \"placeOfOrigin\": \"placeOfOrigin\",\n                                        \"uniqueID\": \"uniqueID\",\n                                        \"unitQuantity\": 1,\n                                        \"weight\": 1.2,\n                                        \"component\": []\n                                    }\n                                ]\n                            }\n                        ]\n                    }\n                ]\n            }\n        ]\n    }\n}"
+				},
+				{
+					"name": "Get Gold History2",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"1\",\n    \"componentProductIds\": [],\n    \"barcode\": \"dsf\",\n    \"name\": \"df;skjcnm \",\n    \"placeOfOrigin\": \"afdc\",\n    \"productionDate\": \"edc\",\n    \"expirationDate\": \"dc\",\n    \"unitQuantity\": 1,\n    \"unitQuantityType\": \"deac\",\n    \"batchQuantity\": 2,\n    \"unitPrice\": \"fd\",\n    \"category\": \"category\",\n    \"variety\": \"fd\",\n    \"misc\": \"wfesdc\",\n    \"locationData\": {\n        \"previous\": [\n            {\n                \"location\": \"sfd\",\n                \"arrivalDate\": \"fdc\"\n            }\n        ],\n        \"current\": {\n            \"location\": \"sfd\",\n            \"arrivalDate\": \"fdc\"\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3005/getGoldEntryWithHistory?barcode=798343806002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3005",
+							"path": [
+								"getGoldEntryWithHistory"
+							],
+							"query": [
+								{
+									"key": "barcode",
+									"value": "798343806002"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1220"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"4c4-rdoxlchhXxqNGdWE7MQDVe7uDRU\""
+						},
+						{
+							"key": "Date",
+							"value": "Mon, 07 Nov 2022 10:41:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"result\": {\n        \"barcode\": \"798343806002\",\n        \"componentIds\": [\n            \"759570687978\"\n        ],\n        \"creationDate\": 1667817615475,\n        \"currentInCharge\": {\n            \"name\": \"Tushar\",\n            \"type\": \"Captain\",\n            \"contact\": \"9393939393\",\n            \"assignedDate\": 1667817632915\n        },\n        \"form\": \"bar\",\n        \"hash\": \"A7519SG9rfYBljWy5ySrwmADw6nbIAOI\",\n        \"locationData\": {\n            \"current\": {\n                \"arrivalDate\": 1667817640542,\n                \"location\": \"Rajasthan\"\n            },\n            \"previous\": [\n                {\n                    \"arrivalDate\": 1667817615475,\n                    \"location\": \"Kolkata\"\n                }\n            ]\n        },\n        \"note\": \"bar to bar\",\n        \"previousInCharge\": [\n            {\n                \"assignedDate\": 1667817615475,\n                \"contact\": \"8420320655\",\n                \"name\": \"Kush\",\n                \"type\": \"Manager\"\n            }\n        ],\n        \"purity\": 99.9,\n        \"uniqueID\": \"uniqueID\",\n        \"unitQuantity\": 1,\n        \"weight\": 1000,\n        \"component\": [\n            {\n                \"barcode\": \"759570687978\",\n                \"carrat\": 22,\n                \"componentIds\": [],\n                \"creationDate\": 1667817180708,\n                \"currentInCharge\": {\n                    \"name\": \"Tushar\",\n                    \"type\": \"Captain\",\n                    \"contact\": \"9393939393\",\n                    \"assignedDate\": 1667817193731\n                },\n                \"form\": \"bar\",\n                \"hash\": \"Tm8yXZc1VGUoX+1LrHAtwazEV64GbFVA\",\n                \"locationData\": {\n                    \"current\": {\n                        \"arrivalDate\": 1667817204836,\n                        \"location\": \"Rajasthan\"\n                    },\n                    \"previous\": [\n                        {\n                            \"arrivalDate\": 1667817180708,\n                            \"location\": \"Hyderabad\"\n                        }\n                    ]\n                },\n                \"note\": \"Took this from an IAS\",\n                \"previousInCharge\": [\n                    {\n                        \"assignedDate\": 1667817180708,\n                        \"contact\": \"8420320655\",\n                        \"name\": \"Harsh\",\n                        \"type\": \"Manager\"\n                    }\n                ],\n                \"purity\": 99.8,\n                \"uniqueID\": \"uniqueID\",\n                \"unitQuantity\": 1,\n                \"weight\": 1.2,\n                \"component\": []\n            }\n        ]\n    }\n}"
+				}
+			]
+		}
+	]
+}
