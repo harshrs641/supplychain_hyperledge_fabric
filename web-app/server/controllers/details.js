@@ -19,8 +19,6 @@ exports.createGoldEntry = async (req, res) => {
         req.body.currentInCharge.assignedDate = Date.now()
         const goldEntryJson = JSON.stringify(req.body);
 
-        console.log(goldEntryJson);
-
         const result = await contract.submitTransaction('createGold', goldEntryJson);
 
         console.log(result.toString());
@@ -52,7 +50,6 @@ exports.getGoldEntryDetail = async (req, res) => {
 
         const response = JSON.parse(result.toString());
 
-        console.log(response);
 
         res.json({ result: response });
 
@@ -76,8 +73,6 @@ exports.getGoldEntryHistory = async (req, res) => {
 
         const response = JSON.parse(result.toString());
 
-        console.log(response);
-
         res.json({ result: response });
 
     } catch (error) {
@@ -93,11 +88,31 @@ exports.goldEntryExists = async (req, res) => {
     try {
         const contract = req.contract;
         const barcode = req.query.barcode.toString();
-        console.log(barcode);
+
 
         const result = await contract.evaluateTransaction('goldExists', barcode);
-        console.log(result.toString());
+
         res.json({ exists: result.toString() });
+    } catch (error) {
+        console.error(`Failed to evaluate transaction: ${error}`);
+        res.status(500).json({
+            error: error
+        });
+    }
+}
+
+exports.queryGoldEntry = async (req, res) => {
+    try {
+        const contract = req.contract;
+        const query = JSON.stringify(req.body);
+
+        const result = await contract.evaluateTransaction('getqueryGoldData', `{"selector": ${query}}`);
+
+        let exists = false;
+        if (JSON.parse(result).length !== 0) {
+            exists = true;
+        }
+        res.json({ exists: exists, result: JSON.parse(result) });
     } catch (error) {
         console.error(`Failed to evaluate transaction: ${error}`);
         res.status(500).json({

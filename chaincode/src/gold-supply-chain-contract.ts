@@ -7,6 +7,7 @@ import { InCharge } from './models/in-charge';
 import { Gold } from './models/gold_entry';
 import { LocationEntry } from './models/gold-location-entry';
 import { GoldWithHistory } from './models/gold-with-history';
+import { Iterators } from 'fabric-shim';
 
 @Info({ title: 'GoldSupplyChain', description: 'Smart Contract for handling gold supply chain.' })
 export class GoldSupplyChainContract extends Contract {
@@ -28,10 +29,10 @@ export class GoldSupplyChainContract extends Contract {
         if (exists) {
             throw new Error(`The gold ${gold.barcode} already exists.`);
         }
-       
+
 
         gold.previousInCharge = [];
-        gold.locationData.previous=[]
+        gold.locationData.previous = []
         this.requireField(gold.weight, 'weight');
         this.requireField(gold.purity, 'purity');
         this.requireField(gold.creationDate, 'creationDate');
@@ -45,6 +46,7 @@ export class GoldSupplyChainContract extends Contract {
         this.requireField(gold.locationData.current.arrivalDate, 'locationData.current.arrivalDate');
 
         const buffer = Buffer.from(JSON.stringify(gold));
+
         await ctx.stub.putState(gold.barcode, buffer);
 
         return gold.barcode;
@@ -82,7 +84,7 @@ export class GoldSupplyChainContract extends Contract {
         }
         const inCharge = JSON.parse(inChargeJson) as InCharge;
         this.requireField(inCharge.type, 'type');
-        this.requireField(inCharge.name, 'name');
+        this.requireField(inCharge.mongoDBId, 'mongoDBId');
 
 
         const gold = await this.readGoldDataFromBarcode(ctx, barcode);
@@ -107,12 +109,39 @@ export class GoldSupplyChainContract extends Contract {
 
         const gold = await this.readGoldDataFromBarcode(ctx, barcode);
         const goldWithHistory = new GoldWithHistory(gold);
-        goldWithHistory.component=[]
+        goldWithHistory.component = []
         for (const componentId of gold.componentIds) {
             const component = await this.readGoldDataFromBarcode(ctx, componentId);
             goldWithHistory.component.push(new GoldWithHistory(component));
         }
+
         return goldWithHistory;
+    }
+
+
+    @Transaction(false)
+    @Returns('Gold[]')
+    public async getqueryGoldData(ctx: Context, query: string) :Promise<Gold[]>{
+        const result = await ctx.stub.getQueryResult(query);
+        const iterator = await this.getIteratorResult(result);
+        return iterator;
+    }
+    private async getIteratorResult(iterator: Iterators.StateQueryIterator):Promise<Gold[]> {
+        const allResults = [];
+        while (true) {
+            
+            const res = await iterator.next();
+            if (res.value) {
+                allResults.push(JSON.parse( res.value.value.toString()) as Gold);
+            }
+
+            // check to see if we have reached then end
+            if (res.done) {
+                // close the iterator            
+                await iterator.close();
+                return allResults;
+            }
+        }
     }
 
     @Transaction(false)

@@ -1,27 +1,7 @@
 # Hyperledger Fabric Food Supply Chain
 ![Logo](https://alexandrebarros.com/global/hyperledger/hero_image.jpg?alt=hyperledger-supply-chain)
-Food Supply Chain is a network to connect participants across the food supply industry through a permissioned and private record of food data. 
+Gold Supply Chain is a network to connect participants across the gold supply industry through a permissioned and private record of gold data. 
 
-## Full Documentation
-You can find the full documentation for this project following this link: [Full Documentation](https://rapchan.gitbook.io/hyperledger-food-supply-chain/)
-
-## Authors
-
-Name  | Git Hub | LinkedIn
-------------- | ------------- | -------------
-Alexandre Rapchan B. Barros  | [@AleRapchan](https://www.github.com/AleRapchan) | [LinkedIn](https://www.linkedin.com/in/alexandre-rapchan/) |
-Alexei Pancratov |  [@AlexeiPancratov](https://github.com/alexeipancratov) |  [LinkedIn](https://www.linkedin.com/in/alexei-pancratov-07413b119/) |
-Michael Francis Jerome Victor | [@Mike-64](https://github.com/Mike-64)| Linkedin link |
-Dhruvam Patel | [@DhruvamPatel](https://github.com/dhruvampatel)| Linkedin link |
-	
-## Revisions
-Date  |  Revision  |  Description  |  Author
---------  |  --------  |  --------  |  --------	
-15/06/2021  |  0.1  |  First Draft  |  Alexandre Rapchan B. Barros
-19/06/2021  |  0.2  |  Added TypeScript Chain Code  |  Alexei Pancratov
-21/06/2021  |  0.3  |  Fixed issues found during review in Certificates Authorities  |  Michael Francis
-29/06/2021  |  0.4  |  Added SDK and API  |  Dhruvam Patel
-09/07/2021  |  0.5  |  Final Review  |  Michael Francis
 
 ## Appendix
 - Hyperledger Org: https://www.hyperledger.org/
@@ -31,7 +11,7 @@ Date  |  Revision  |  Description  |  Author
 - Hyperledger Explorer: https://github.com/hyperledger/blockchain-explorer
 - What is Private Data: https://hyperledger-fabric.readthedocs.io/en/release-2.2/private-data/private-data.html
 - Using Private Data in Fabric: https://hyperledger-fabric.readthedocs.io/en/release-2.2/private_data_tutorial.html
-- Whiting your first Chaincode: https://hyperledger-fabric.readthedocs.io/en/release-2.2/chaincode4ade.html
+- Writing your first Chaincode: https://hyperledger-fabric.readthedocs.io/en/release-2.2/chaincode4ade.html
 - Graphana: https://grafana.com/grafana/dashboards
 - Blockchain Governance Considerations: https://www.blockchain.ae/articles/blockchain-governance-considerations
 - Private Data Collections on Hyperledger Fabric: https://github.com/IBM/private-data-collections-on-fabric
@@ -44,7 +24,15 @@ Date  |  Revision  |  Description  |  Author
 - [Hyperledger Food Supply Chain dApp](https://rapchan.gitbook.io/hyperledger-food-supply-chain/implementation/deploy-run-dapp)
 - [Local CouchDB](http://127.0.0.1:5984/_utils/#login)
 
+## Pull Docker Images
 
+```
+harshrajsingh@Harshs-MacBook-Pro fabric-network % ./install-fabric.sh
+```
+
+
+
+## Create channel and deploy chaincode
 ```
 harshrajsingh@Harshs-MacBook-Pro fabric-network % ./network.sh down  
 harshrajsingh@Harshs-MacBook-Pro fabric-network % ./network.sh up createChannel -ca -s couchdb   
@@ -55,18 +43,18 @@ harshrajsingh@Harshs-MacBook-Pro fabric-network % ./network.sh deployCC -ccn sup
 
 
 
-
+## Create wallets for admin, manager, employee and client to authorize apis
 ```
 harshrajsingh@Harshs-MacBook-Pro fabric % rm -R wallet/*
-harshrajsingh@Harshs-MacBook-Pro fabric % node '/Users/harshrajsingh/GitHub/hyperledger-food-supply-chain/web-app/server/fabric/enrollAdmin.js'
-harshrajsingh@Harshs-MacBook-Pro fabric % node '/Users/harshrajsingh/GitHub/hyperledger-food-supply-chain/web-app/server/fabric/registerUsers.js'
+harshrajsingh@Harshs-MacBook-Pro fabric % node '/Users/harshrajsingh/GitHub/hyperledger-gold-supply-chain/web-app/server/fabric/enrollAdmin.js'
+harshrajsingh@Harshs-MacBook-Pro fabric % node '/Users/harshrajsingh/GitHub/hyperledger-gold-supply-chain/web-app/server/fabric/registerUsers.js'
 
 ```
 
 
 
-
+## Start API server
 ```
-harshrajsingh@Harshs-MacBook-Pro server % node '/Users/harshrajsingh/GitHub/hyperledger-food-supply-chain/web-app/server/app.js'
+harshrajsingh@Harshs-MacBook-Pro server % node '/Users/harshrajsingh/GitHub/hyperledger-gold-supply-chain/web-app/server/app.js'
 
 ```

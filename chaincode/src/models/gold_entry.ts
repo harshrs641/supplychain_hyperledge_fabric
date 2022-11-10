@@ -28,6 +28,12 @@ export class Gold {
     unitQuantity: number;
 
     @Property()
+    rate: number;
+
+    @Property()
+    amount: number;
+
+    @Property()
     weight: number;
 
     @Property()

@@ -7,14 +7,25 @@ export class InCharge {
     }
 
     @Property()
-    name: string;
+    mongoDBId: string;
 
+//// MANAGER | CAPTAIN | CUSTODIAN | REFINER | VERIFIER
     @Property()
     type: string;
 
     @Property()
-    contact: string;
-    @Property()
     assignedDate: number;
+
+    @Property()
+    weight: number;
+
+    @Property()
+    purity: number;
+
+    @Property()
+    weightScaleImage: string;
+
+    @Property()
+    purityScaleImage: string;
 
 }
