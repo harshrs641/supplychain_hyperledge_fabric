@@ -11,4 +11,7 @@ export class LocationEntry {
 
     @Property()
     arrivalDate: number;
+
+    @Property()
+    status: string;
 }

@@ -1,5 +1,5 @@
-# Hyperledger Fabric Food Supply Chain
-![Logo](https://alexandrebarros.com/global/hyperledger/hero_image.jpg?alt=hyperledger-supply-chain)
+# Hyperledger Fabric Gold Supply Chain
+
 Gold Supply Chain is a network to connect participants across the gold supply industry through a permissioned and private record of gold data. 
 
 
