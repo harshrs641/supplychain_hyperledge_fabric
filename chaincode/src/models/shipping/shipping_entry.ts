@@ -1,13 +1,18 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
+import { Metadata } from '../metadata';
 
 @FabricObject()
-export class LocationEntry {
-    constructor(obj?: Partial<LocationEntry>) {
-        Object.assign(this, obj);
-    }
+export class ShippingEntry {
+
 
     @Property()
-    location: string;
+    from: string;
+
+    @Property()
+    to: string;
+
+    @Property('managedBy', 'Metadata')
+    managedBy: Metadata;
 
     @Property()
     arrivalDate: number;

@@ -23,7 +23,8 @@ Gold Supply Chain is a network to connect participants across the gold supply in
 - [Fair Trade International](https://www.fairtrade.net/)
 - [Hyperledger Food Supply Chain dApp](https://rapchan.gitbook.io/hyperledger-food-supply-chain/implementation/deploy-run-dapp)
 - [Local CouchDB](http://127.0.0.1:5984/_utils/#login)
-
+- [CouchDB indexed](http://127.0.0.1:5984/channel1_/_index)
+http://127.0.0.1:5984/channel1_/_index
 ## Pull Docker Images
 
 ```

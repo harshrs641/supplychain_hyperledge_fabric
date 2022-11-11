@@ -1,60 +1,53 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
-import { LocationData } from './gold-location-data';
-import { InCharge } from './in-charge';
+import { AmounteEntry } from './amount_entry';
+import { InChargeMetaData } from './incharge/incharge_metadata';
+import { ProcessMetaData } from './process/process_metadata';
+import { QualityEntry } from './quality_entry';
+import { ShippingMetaData } from './shipping/shipping_metadata';
+import { UniqueEntry } from './unique_entry';
+import { VerificationMetaData } from './verification/verification_metadata';
+
 
 @FabricObject()
 export class Gold {
 
-    /// UNIQUE
-    // @Property()
-    // id: string;
-    @Property()
-    barcode: string;
-    @Property()
-    uniqueID: string;
-    @Property()
-    hash: string;
-
     @Property('componentIds', 'Array<string>')
     componentIds: string[];
 
-    // @Property()
-    // placeOfOrigin: string;
+    @Property()
+    merchantID: string;
 
     @Property()
     creationDate: number;
 
     @Property()
-    unitQuantity: number;
-
-    @Property()
-    rate: number;
-
-    @Property()
-    amount: number;
-
-    @Property()
-    weight: number;
-
-    @Property()
-    purity: number;
-
-    @Property()
-    form: string;
-
-    @Property('locationData', 'LocationData')
-    locationData: LocationData;
-
-    @Property()
     note: string;
 
-    @Property('currentInCharge', 'InCharge')
-    currentInCharge: InCharge;
+    @Property('incharge', 'InChargeMetaData')
+    incharge: InChargeMetaData;
 
-    @Property('inCharge', 'Array<InCharge>')
-    previousInCharge: InCharge[];
+    @Property('process', 'ProcessMetaData')
+    process: ProcessMetaData;
+
+    @Property('shipping', 'ShippingMetaData')
+    shipping: ShippingMetaData;
+
+    @Property('verification', 'VerificationMetaData')
+    verification: VerificationMetaData;
+
+    @Property('unique', 'UniqueEntry')
+    unique: UniqueEntry;
+
+    @Property('qualtiy', 'QualityEntry')
+    properties: QualityEntry;
+
+    @Property('amount', 'AmounteEntry')
+    amount: AmounteEntry;
+
+
 }
 
 // enum GoldForm {
 //     BALL = 0, BAR = 1, MELT = 2, ORIGINAL = 3,
 // }
+

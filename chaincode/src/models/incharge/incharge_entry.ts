@@ -1,20 +1,18 @@
 import { Object as FabricObject, Property } from 'fabric-contract-api';
+import { Metadata } from '../metadata';
 
 @FabricObject()
-export class InCharge {
-    constructor(obj?: Partial<InCharge>) {
+export class InChargeEntry {
+    constructor(obj?: Partial<InChargeEntry>) {
         Object.assign(this, obj);
     }
 
-    @Property()
-    mongoDBId: string;
 
-//// MANAGER | CAPTAIN | CUSTODIAN | REFINER | VERIFIER
-    @Property()
-    type: string;
+    @Property('self', 'Metadata')
+    self: Metadata;
 
-    @Property()
-    assignedDate: number;
+    @Property('captain', 'Metadata')
+    captain: Metadata;
 
     @Property()
     weight: number;
